@@ -4,12 +4,16 @@
 #include <unordered_map>
 #include <utility>
 
+// LRUCache provides O(1) get and put operations using a hash map
+// and a doubly linked list to track usage order.
 class LRUCache {
 public:
     explicit LRUCache(size_t capacity);
 
     int get(int key);          // returns value or -1 if not found
     void put(int key, int value);
+    void print() const;
+
 
 private:
     size_t cap_;

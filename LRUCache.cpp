@@ -1,5 +1,6 @@
 #include "LRUCache.h"
 #include <stdexcept>
+#include <iostream>
 
 LRUCache::LRUCache(size_t capacity) : cap_(capacity) {
     if (cap_ == 0) {
@@ -15,6 +16,14 @@ int LRUCache::get(int key) {
 
     touch(it->second);
     return it->second->second;
+}
+
+void LRUCache::print() const {
+    std::cout << "Cache (MRU -> LRU): ";
+    for (const auto& [k, v] : dll_) {
+        std::cout << "[" << k << ":" << v << "] ";
+    }
+    std::cout << "\n";
 }
 
 void LRUCache::put(int key, int value) {
